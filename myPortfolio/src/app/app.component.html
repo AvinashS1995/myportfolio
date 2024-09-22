@@ -142,9 +142,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <a href="https://drive.google.com/file/d/1lW4ksMBDzSHq9gWT13JSYCA_30Z-p9_A/view?usp=sharing"
+                            <!-- <a href="https://drive.google.com/file/d/1lW4ksMBDzSHq9gWT13JSYCA_30Z-p9_A/view?usp=sharing"
                                 target="_blank" class="btn btn-primary py-2 px-4"> <i
-                                    class="fas fa-download me-2"></i>Download My CV</a>
+                                    class="fas fa-download me-2"></i>Download My CV</a> -->
+
+                            <button class="btn btn-primary py-2 px-4" (click)="onDownloadCV()"><i class="fas fa-download me-2"></i>Download My CV</button>
                         </div>
                     </div>
                 </div>
@@ -550,7 +552,7 @@
                                     <div class="col-xl-3">
                                         <p><i class="fa fa-check me-2"></i> UI/UX Design</p>
                                         <p><i class="fa fa-check me-2"></i> Research</p>
-                                        <p class="mb-0"><i class="fa fa-check me-2"></i> Mobile App</p>
+                                        <p class="mb-0"><i class="fa fa-check me-2"></i> Web App</p>
                                     </div>
                                 </div>
                             </div>
@@ -572,12 +574,12 @@
                                     <div class="col-xl-3">
                                         <p><i class="fa fa-check me-2"></i> UI/UX Design</p>
                                         <p><i class="fa fa-check me-2"></i> Research</p>
-                                        <p class="mb-0"><i class="fa fa-check me-2"></i> Mobile App</p>
+                                        <p class="mb-0"><i class="fa fa-check me-2"></i> Web App</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="service-item p-4 wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="row g-4 align-items-center">
                                     <div class="col-xl-2">
@@ -598,7 +600,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -977,7 +979,7 @@
                                     </div>
                                     <div>
                                         <h4>Address</h4>
-                                        <p class="mb-0">123 Street New York.USA</p>
+                                        <p class="mb-0">Rajesh Nagar Taroda Naka Nanded.</p>
                                     </div>
                                 </div>
                                 <div class="d-flex mb-4">
@@ -986,7 +988,7 @@
                                     </div>
                                     <div>
                                         <h4>Mail Us</h4>
-                                        <p class="mb-0">info&#64;example.com</p>
+                                        <p class="mb-0">ai.suryawanshi95&#64;gmail.com</p>
                                     </div>
                                 </div>
                                 <div class="d-flex">
@@ -994,19 +996,19 @@
                                         <i class="fa fa-phone-alt"></i>
                                     </div>
                                     <div>
-                                        <h4>Telephone</h4>
-                                        <p class="mb-0">(+012) 3456 7890</p>
+                                        <h4>Mobile</h4>
+                                        <p class="mb-0">(+91) 839 030 8967</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-7 wow fadeInUp" data-wow-delay="0.3s">
                                 <div>
-                                    <form>
+                                    <!-- <form [formGroup]="sendMessageForm" (ngSubmit)="send()">
                                         <div class="row g-3">
                                             <div class="col-lg-12 col-xl-6">
                                                 <div class="form-floating">
                                                     <input type="text" class="form-control border-0" id="name"
-                                                        placeholder="Your Name">
+                                                        placeholder="Your Name" formCon>
                                                     <label for="name">Your Name</label>
                                                 </div>
                                             </div>
@@ -1017,20 +1019,6 @@
                                                     <label for="email">Your Email</label>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-lg-12 col-xl-6">
-                                                <div class="form-floating">
-                                                    <input type="phone" class="form-control border-0" id="phone"
-                                                        placeholder="Phone">
-                                                    <label for="phone">Your Phone</label>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-lg-12 col-xl-6">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" id="project"
-                                                        placeholder="Project">
-                                                    <label for="project">Your Project</label>
-                                                </div>
-                                            </div> -->
                                             <div class="col-12">
                                                 <div class="form-floating">
                                                     <input type="text" class="form-control border-0" id="subject"
@@ -1051,7 +1039,56 @@
                                                 <button class="btn btn-primary w-100 py-3">Send Message</button>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form> -->
+                                    
+                                    <form [formGroup]="sendMessageForm" (ngSubmit)="send()">
+                                        <div class="row g-3">
+                                          <div class="col-lg-12 col-xl-6">
+                                            <div class="form-floating">
+                                              <input type="text" class="form-control border-0" id="name" placeholder="Your Name" formControlName="yourName">
+                                              <label for="name">Your Name</label>
+                                            </div>
+                                            @if(sendMessageForm.controls['yourName'].invalid && sendMessageForm.controls['yourName'].touched) {
+                                                <small class="text-danger ms-2">Please Enter Your Name</small>
+                                            }
+                                          </div>
+                                          <div class="col-lg-12 col-xl-6">
+                                            <div class="form-floating">
+                                              <input type="email" class="form-control border-0" id="email" placeholder="Your Email" formControlName="yourEmail">
+                                              <label for="email">Your Email</label> 
+                                            </div>
+                                            @if(sendMessageForm.controls['yourEmail'].hasError('required') && sendMessageForm.controls['yourEmail'].touched) {
+                                                <small class="text-danger ms-2">Please Enter Your Email</small>
+                                            }
+                                            @if(sendMessageForm.controls['yourEmail'].hasError('email') && sendMessageForm.controls['yourEmail'].touched) {
+                                                <small class="text-danger ms-2">Please Enter Valid Email</small>
+                                            }
+                                          </div>
+                                          <div class="col-12">
+                                            <div class="form-floating">
+                                              <input type="text" class="form-control border-0" id="subject" placeholder="Subject" formControlName="subject">
+                                              <label for="subject">Subject</label>
+                                            </div>
+                                            @if(sendMessageForm.controls['subject'].invalid && sendMessageForm.controls['subject'].touched) {
+                                                <small class="text-danger ms-2">Please Enter Subject</small>
+                                            }
+                                          </div>
+                                          <div class="col-12">
+                                            <div class="form-floating">
+                                              <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 150px"
+                                                formControlName="message"></textarea>
+                                              <label for="message">Message</label>
+                                            </div>
+                                            @if(sendMessageForm.controls['message'].invalid && sendMessageForm.controls['message'].touched) {
+                                                <small class="text-danger ms-2">Please Enter Message</small>
+                                            }
+                                          </div>
+                                          <div class="col-12">
+                                            <button type="submit" class="btn btn-primary w-100 py-3">Send Message</button>
+                                          </div>
+                                        </div>
+                                      </form>
+                                      
                                 </div>
                             </div>
                             <div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
