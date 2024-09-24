@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterOutlet } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import { DefaultGlobalConfig, ToastrService } from 'ngx-toastr';
+import Typed from 'typed.js';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,8 @@ export class AppComponent {
 
   ngOnInit(): void {
 
+    this.typedAnimationText();
+  
   }
 
   onDownloadCV() {
@@ -68,6 +71,22 @@ export class AppComponent {
     }
 
   }
+
+  typedAnimationText() {
+    if (typeof document !== 'undefined') {
+      const options = {
+        strings: ["Software Engineer", "Angular Developer", "Frontend Developer" ],
+        typeSpeed: 100,         // Typing speed in milliseconds
+        backSpeed: 50,          // Backspacing speed
+        backDelay: 1500,        // Time before backspacing starts
+        loop: true              // Loop the typing effect
+      };
+    
+      const typed = new Typed('#desigantion', options);
+    }
+  }
+
+
 
 
   
